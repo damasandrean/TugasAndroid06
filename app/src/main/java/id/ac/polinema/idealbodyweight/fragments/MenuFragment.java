@@ -1,9 +1,8 @@
-package id.ac.polinema.idealbodyweight.fragments;
+package id.ac.polinema.idealbodyweight.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-
 
 import androidx.fragment.app.Fragment;
 
@@ -32,25 +31,33 @@ public class MenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //return inflater.inflate(R.layout.fragment_menu, container, false);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
-        //return inflater.inflate(R.layout.fragment_menu, container, false);
 
         // sisipkan register event click nanti di sini.
-       Button brocaButton = view.findViewById(R.id.button_broca);
-       brocaButton.setOnClickListener((view) {
-
-        });
-        Button bmiButton = view.findViewById(R.id.button_bmi);
-        bmiButton.setOnContextClickListener((view){
-            if (mListener != null){
-                mListener.onBodyMassIndexButtonClicked();
+        Button brocaButton = view.findViewById(R.id.button_broca);
+        brocaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.onBrocaIndexButtonClicked();
+                }
             }
         });
+        Button bmiButton = view.findViewById(R.id.button_bmi);
+        bmiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.onBodyMassIndexButtonClicked();
+                }
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-
 
     @Override
     public void onAttach(Context context) {
@@ -83,6 +90,5 @@ public class MenuFragment extends Fragment {
         // TODO: Update argument type and name
         void onBrocaIndexButtonClicked();
         void onBodyMassIndexButtonClicked();
-
     }
 }
